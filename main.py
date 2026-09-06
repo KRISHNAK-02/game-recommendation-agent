@@ -23,6 +23,7 @@ load_dotenv()
 console = Console(force_terminal=True)
 
 
+<<<<<<< HEAD
 def ensure_api_keys() -> RAWGClient:
     """Check for RAWG API key, prompt user if missing."""
     api_key = os.getenv("RAWG_API_KEY")
@@ -44,6 +45,16 @@ def ensure_api_keys() -> RAWGClient:
             os.environ["RAWG_API_KEY"] = entered_key
             
         api_key = entered_key
+=======
+DEFAULT_RAWG_API_KEY = "a5986016829846c98316900383706e0b"
+
+
+def ensure_api_keys() -> RAWGClient:
+    """Check for RAWG API key, use fallback default if missing in .env."""
+    api_key = os.getenv("RAWG_API_KEY")
+    if not api_key or api_key.strip() == "" or "your_" in api_key:
+        api_key = DEFAULT_RAWG_API_KEY
+>>>>>>> 0db8aa4 (2nd comit)
 
     try:
         client = RAWGClient(api_key=api_key)
