@@ -23,38 +23,27 @@ load_dotenv()
 console = Console(force_terminal=True)
 
 
-<<<<<<< HEAD
 def ensure_api_keys() -> RAWGClient:
-    """Check for RAWG API key, prompt user if missing."""
+    """Check for RAWG API key, prompt user if missing and save to .env."""
     api_key = os.getenv("RAWG_API_KEY")
     if not api_key or api_key.strip() == "" or "your_" in api_key:
         ui.print_info("No RAWG API key found in .env.")
         console.print("[yellow]You can get a free RAWG key at [bold underline]https://rawg.io/apidocs[/bold underline][/yellow]\n")
-        
+
         entered_key = Prompt.ask("[bold cyan]Please enter your RAWG API Key[/bold cyan]").strip()
         if not entered_key:
             ui.print_error("RAWG API key is required to fetch game data. Exiting.")
             sys.exit(1)
-        
+
         env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
         try:
             set_key(env_path, "RAWG_API_KEY", entered_key)
             os.environ["RAWG_API_KEY"] = entered_key
-            ui.print_success("Saved RAWG API Key to .env file!")
+            ui.print_success("Saved RAWG API Key to .env file! (won't ask again)")
         except Exception:
             os.environ["RAWG_API_KEY"] = entered_key
-            
+
         api_key = entered_key
-=======
-DEFAULT_RAWG_API_KEY = "a5986016829846c98316900383706e0b"
-
-
-def ensure_api_keys() -> RAWGClient:
-    """Check for RAWG API key, use fallback default if missing in .env."""
-    api_key = os.getenv("RAWG_API_KEY")
-    if not api_key or api_key.strip() == "" or "your_" in api_key:
-        api_key = DEFAULT_RAWG_API_KEY
->>>>>>> 0db8aa4 (2nd comit)
 
     try:
         client = RAWGClient(api_key=api_key)
