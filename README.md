@@ -18,24 +18,55 @@ An intelligent, terminal-based AI game recommendation agent and live price scann
 
 ## 🚀 Quick Setup
 
-### 1. Install Dependencies
+### 1. Clone the Repository
 ```bash
+git clone https://github.com/your-username/game-recommendation-agent.git
+cd game-recommendation-agent
+```
+
+### 2. Create a Virtual Environment & Install Dependencies
+
+**Windows (PowerShell):**
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-### 2. Configure API Keys
-Create a `.env` file in the project folder (or copy `.env.example`):
+**Mac / Linux:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 3. Configure API Keys
+
+Copy the example env file and fill in your keys:
+```bash
+cp .env.example .env
+```
+Then edit `.env`:
 ```env
 RAWG_API_KEY=your_rawg_api_key_here
 GEMINI_API_KEY=your_gemini_api_key_here  # Optional: For AI reasoning
 ```
-> **Get Free Keys:**
-> - RAWG API Key: [rawg.io/apidocs](https://rawg.io/apidocs)
-> - Gemini API Key: [aistudio.google.com](https://aistudio.google.com/)
-> - *CheapShark API is 100% free and requires no key!*
 
-### 3. Run the Agent
+> **Get Free Keys:**
+> - 🎮 RAWG API Key: [rawg.io/apidocs](https://rawg.io/apidocs) — free, instant signup
+> - 🤖 Gemini API Key: [aistudio.google.com](https://aistudio.google.com/) — optional, enables AI advisor
+> - 💰 CheapShark API is 100% free, no key needed!
+
+> **Don't have a `.env` file?** No problem! The app will **automatically ask you to enter your RAWG API key** on first run and save it for you.
+
+### 4. Run the Agent
+
+**Windows (PowerShell):**
 ```powershell
-.venv\Scripts\python main.py
+.\venv\Scripts\python main.py
 ```
-*(or `python main.py`)*
+
+**Mac / Linux:**
+```bash
+python main.py
+```
