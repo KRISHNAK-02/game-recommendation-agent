@@ -46,10 +46,6 @@ pip install -r requirements.txt
 
 **Windows (PowerShell):**
 ```powershell
-.\venv\Scripts\python main.py
-```
-
-**Mac / Linux:**
-```bash
 python main.py
 ```
+
